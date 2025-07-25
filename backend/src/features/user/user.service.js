@@ -1,8 +1,20 @@
 const prisma = require("../../config/db");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
-const getUserService = async () => {
-  const result = await prisma.user.findMany();
+const loginUserService = async (email, password) => {
+  const user = await prisma.user.findUnique({ where: { email } });
+
+  if (!user) {
+    throw new Error("Invalid Credentials");
+  }
+
+  const isMatch = await bcrypt.compare(password, user.password);
+
+  if (!isMatch) {
+    throw new Error("Invalid credentials");
+  }
+
   return result;
 };
 
@@ -21,4 +33,4 @@ const createUserService = async (email, password) => {
   return result;
 };
 
-module.exports = { getUserService, createUserService };
+module.exports = { loginUserService, createUserService };

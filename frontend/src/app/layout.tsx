@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
+import Provider from "@/components/layouts/provider";
 
 export const metadata: Metadata = {
   title: "Expense App",
@@ -13,7 +15,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <Provider>{children}</Provider>
+      </body>
     </html>
   );
 }

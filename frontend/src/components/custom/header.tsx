@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Bell, Search } from "lucide-react";
+import DialogTransaction from "./dialog-transaction";
 
 const Header = () => {
   return (
@@ -17,9 +18,9 @@ const Header = () => {
         <Button variant="outline" size="icon" className="mr-2 lg:mr-4">
           <Bell className="h-4 w-4" />
         </Button>
-        <div>
-          <Button className="w-48">+ Add Transaction</Button>
-        </div>
+        <DialogTransaction>
+          <Button className="lg:w-48 w-36">+ Add Transaction</Button>
+        </DialogTransaction>
       </div>
     </header>
   );

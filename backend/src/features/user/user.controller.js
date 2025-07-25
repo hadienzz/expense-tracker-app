@@ -1,11 +1,13 @@
-const { getUserService, createUserService } = require("./user.service");
+const { createUserService, loginUserService } = require("./user.service");
 
-const getUser = async (req, res) => {
+const loginUser = async (req, res) => {
   try {
-    const data = await getUserService();
-    return res.status(200).json({ data });
+    // const data = await loginUserService();
+    const { email, password } = req.body;
+    const result = loginUserService(email, password);
+    return res.status(200).json({ result });
   } catch (err) {
-    console.error(err)
+    console.error(err);
     return res.status(400).json({ message: "Internal Server Error" });
   }
 };
@@ -21,4 +23,4 @@ const createUser = async (req, res) => {
   }
 };
 
-module.exports = { getUser, createUser };
+module.exports = { loginUser, createUser };

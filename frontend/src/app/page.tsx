@@ -10,8 +10,8 @@ const App = () => {
       <div className="grid gap-6">
         <StatsCard />
       </div>
-      <div className="grid grid-cols-3">
-        <div className="col-span-2">
+      <div className="grid grid-cols-3 mt-6">
+        <div className="col-span-3 lg:col-span-2">
           <TransactionList />
         </div>
         <div></div>

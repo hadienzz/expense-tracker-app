@@ -21,3 +21,31 @@ export const NAV_ITEM: NavItem[] = [
   { icon: <PieChart className="w-4 h-4" />, label: "Reports" },
   { icon: <Settings className="w-4 h-4" />, label: "Settings" },
 ];
+
+type TransactionItem = {
+  title: string;
+  createdAt: string;
+  type: string;
+  amount: string;
+};
+
+export const TRANSACTION_ITEM: TransactionItem[] = [
+  {
+    title: "Salary",
+    createdAt: "Today, 12.30 PM",
+    type: "Income",
+    amount: "2,500.00",
+  },
+  {
+    title: "Grocery Shopping",
+    createdAt: "Jul 20, 2023",
+    type: "Food",
+    amount: "-2,500.00",
+  },
+  {
+    title: "Netflix Subscription",
+    createdAt: "Jul 20, 2023",
+    type: "Entertainment",
+    amount: "-14.99",
+  },
+];
