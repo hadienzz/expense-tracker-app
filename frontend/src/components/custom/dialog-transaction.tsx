@@ -110,7 +110,6 @@ const TransactionFormFields = ({
     <div className="grid gap-2">
       <Label>Notes (Optional)</Label>
       <Input
-        required
         name="notes"
         onChange={formik.handleChange}
         value={formik.values.notes}
@@ -120,7 +119,7 @@ const TransactionFormFields = ({
 );
 
 const DialogTransaction = ({ children }: AddTransactionDialogProps) => {
-  const formik = useForm();
+  const { formik } = useForm();
   return (
     <Dialog onOpenChange={(open) => !open && formik.resetForm()}>
       <DialogTrigger asChild>{children}</DialogTrigger>
@@ -165,7 +164,7 @@ const DialogTransaction = ({ children }: AddTransactionDialogProps) => {
           </Tabs>
           <DialogFooter>
             <div className="pt-4 flex w-full items-center gap-4">
-              <Button className="flex-1">Save</Button>
+              <Button className="flex-1" type="submit">Save</Button>
             </div>
           </DialogFooter>
         </form>

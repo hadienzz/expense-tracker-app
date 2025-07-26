@@ -49,3 +49,19 @@ export const TRANSACTION_ITEM: TransactionItem[] = [
     amount: "-14.99",
   },
 ];
+
+type BenefitList = {
+  benefit: string;
+};
+
+export const BENEFIT_LIST: BenefitList[] = [
+  {
+    benefit: "Real-time expense tracking",
+  },
+  {
+    benefit: "Multi-currency support",
+  },
+  {
+    benefit: "Detailed analytics & reports",
+  },
+];

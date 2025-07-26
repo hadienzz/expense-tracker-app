@@ -1,8 +1,15 @@
 const prisma = require("../../config/db");
 
 const createTransactionService = async (data) => {
+  // console.log(data);
+  const submitData = {
+    ...data,
+    amount: parseFloat(data.amount),
+    user_id: "apaajabebas",
+    currency: "IDR",
+  };
   const result = await prisma.transaction.create({
-    data,
+    data: submitData,
   });
   return result;
 };

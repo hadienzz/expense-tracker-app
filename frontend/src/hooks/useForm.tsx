@@ -1,8 +1,10 @@
-'use client'
+"use client";
 
+import axios from "axios";
 import { useFormik } from "formik";
 import validation from "./validation";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { toast } from "sonner";
 
 export interface FormValues {
   title: string;
@@ -14,9 +16,28 @@ export interface FormValues {
 }
 
 const useForm = () => {
-  const { validationSchema } = validation();
+  const { transactionValidationSchema } = validation();
 
-  const { mutate, isPending } = useMutation({});
+  const { mutate, isPending } = useMutation({
+    mutationFn: async (values: FormValues) => {
+      try {
+        const response = await axios.post(
+          "http://localhost:3001/api/transaction",
+          values
+        );
+        toast.success("Data berhasil disimpan");
+
+        return response.data;
+      } catch (err) {
+        toast.error("Gagal menyimpan data");
+
+        console.error(err);
+      }
+    },
+    onSuccess: () => {
+      formik.resetForm();
+    },
+  });
 
   const formik = useFormik<FormValues>({
     initialValues: {
@@ -27,11 +48,16 @@ const useForm = () => {
       date: "",
       notes: "",
     },
-    validationSchema,
-    onSubmit: (values) => {},
+    validationSchema: transactionValidationSchema,
+    onSubmit: (values) => {
+      mutate(values);
+    },
   });
 
-  return formik;
+  return {
+    formik,
+    isPending,
+  };
 };
 
 export default useForm;

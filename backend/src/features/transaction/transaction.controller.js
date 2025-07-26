@@ -1,11 +1,15 @@
-const { createTransactionService, getTransactionService } = require("./transaction.service");
+const {
+  createTransactionService,
+  getTransactionService,
+} = require("./transaction.service");
 
 const createTransaction = async (req, res) => {
+  const data = req.body;
   try {
-    const data = req.body;
     const result = await createTransactionService(data);
     return res.status(200).json({ message: `Transaksi Baru barhasil dibuat` });
   } catch (err) {
+    console.error(err)
     return res.status(400).json({ message: "Internal server error" });
   }
 };
@@ -16,7 +20,7 @@ const getTransaction = async (req, res) => {
     const result = await getTransactionService(userId);
     return res.status(200).json({ result });
   } catch (err) {
-    console.error(err)
+    console.error(err);
     return res.status(400).json({ message: "Internal server Error" });
   }
 };
