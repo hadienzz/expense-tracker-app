@@ -26,10 +26,16 @@ const validation = () => {
       .required("Confirm your password"),
   });
 
+  const budgetingValidationSchema = Yup.object().shape({
+    category: Yup.string().required("Category is required"),
+    limit: Yup.number().required("limit is required"),
+  });
+
   return {
     today,
     transactionValidationSchema,
     signUpValidationSchema,
+    budgetingValidationSchema,
   };
 };
 

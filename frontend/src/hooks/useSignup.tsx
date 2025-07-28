@@ -3,6 +3,8 @@
 import { useMutation } from "@tanstack/react-query";
 import { useFormik } from "formik";
 import validation from "./validation";
+import axios from "axios";
+import { toast } from "sonner";
 
 export interface SignUpFormValue {
   firstName: string;
@@ -14,10 +16,22 @@ export interface SignUpFormValue {
 
 const useSignup = () => {
   const { signUpValidationSchema } = validation();
-
   const { mutate } = useMutation({
-    mutationFn: async (values: SignUpFormValue) => {
-    
+    mutationFn: async (values: Omit<SignUpFormValue, "confirmPassword">) => {
+      try {
+        const { email, firstName, lastName, password } = values;
+        console.log(values);
+        const response = await axios.post(
+          "http://localhost:3001/api/user/signup",
+          { email, firstName, lastName, password }
+        );
+        toast.success("Berhasil membuat akun");
+        console.log(response)
+        return response.data;
+      } catch (err) {
+        toast.error("Gagal membuat akun");
+        console.error(err);
+      }
     },
   });
 
@@ -31,8 +45,9 @@ const useSignup = () => {
     },
     validationSchema: signUpValidationSchema,
     onSubmit: (value) => {
-      mutate(value);
-      formik.resetForm()
+      const { confirmPassword, ...dataTosend } = value;
+      mutate(dataTosend);
+      formik.resetForm();
     },
   });
 

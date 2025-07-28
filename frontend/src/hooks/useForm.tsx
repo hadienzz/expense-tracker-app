@@ -16,6 +16,7 @@ export interface FormValues {
 }
 
 const useForm = () => {
+  const queryClient = useQueryClient();
   const { transactionValidationSchema } = validation();
 
   const { mutate, isPending } = useMutation({
@@ -23,9 +24,11 @@ const useForm = () => {
       try {
         const response = await axios.post(
           "http://localhost:3001/api/transaction",
-          values
+          values,
+          { withCredentials: true }
         );
         toast.success("Data berhasil disimpan");
+        queryClient.invalidateQueries({ queryKey: ["transaction"] });
 
         return response.data;
       } catch (err) {

@@ -29,20 +29,20 @@ interface AddTransactionDialogProps {
 }
 
 const expenseCategories = [
-  { value: "food", label: "Food" },
-  { value: "transport", label: "Transport" },
-  { value: "entertainment", label: "Entertainment" },
-  { value: "utilities", label: "Utilities" },
-  { value: "housing", label: "Housing" },
-  { value: "other", label: "Other" },
+  { value: "Food", label: "Food" },
+  { value: "Transport", label: "Transport" },
+  { value: "Entertainment", label: "Entertainment" },
+  { value: "Utilities", label: "Utilities" },
+  { value: "Housing", label: "Housing" },
+  { value: "Other", label: "Other" },
 ];
 
 const incomeCategories = [
-  { value: "salary", label: "Salary" },
-  { value: "investment", label: "Investment" },
-  { value: "freelance", label: "Freelance" },
-  { value: "gift", label: "Gift" },
-  { value: "other", label: "Other" },
+  { value: "Salary", label: "Salary" },
+  { value: "Investment", label: "Investment" },
+  { value: "Freelance", label: "Freelance" },
+  { value: "Gift", label: "Gift" },
+  { value: "Other", label: "Other" },
 ];
 
 interface TransactionFormFieldsProps {
@@ -142,20 +142,20 @@ const DialogTransaction = ({ children }: AddTransactionDialogProps) => {
             }}
           >
             <TabsList className="w-full grid grid-cols-2">
-              <TabsTrigger value="expense" className="cursor-pointer">
+              <TabsTrigger value="Expense" className="cursor-pointer">
                 Expense
               </TabsTrigger>
-              <TabsTrigger value="income" className="cursor-pointer">
+              <TabsTrigger value="Income" className="cursor-pointer">
                 Income
               </TabsTrigger>
             </TabsList>
-            <TabsContent value="expense">
+            <TabsContent value="Expense">
               <TransactionFormFields
                 categories={expenseCategories}
                 formik={formik}
               />
             </TabsContent>
-            <TabsContent value="income">
+            <TabsContent value="Income">
               <TransactionFormFields
                 categories={incomeCategories}
                 formik={formik}
@@ -164,7 +164,9 @@ const DialogTransaction = ({ children }: AddTransactionDialogProps) => {
           </Tabs>
           <DialogFooter>
             <div className="pt-4 flex w-full items-center gap-4">
-              <Button className="flex-1" type="submit">Save</Button>
+              <Button className="flex-1" type="submit">
+                Save
+              </Button>
             </div>
           </DialogFooter>
         </form>

@@ -10,7 +10,7 @@ const StatsCard = () => {
           <Wallet className="text-neutral-400 w-4 h-4" />
         </CardHeader>
         <CardContent>
-          <h1 className="text-lg md:text-2xl font-bold">$12,546.00</h1>
+          <h1 className="text-lg md:text-2xl font-bold ">$12,546.00</h1>
           <p className="text-neutral-500 text-xs md:text-sm">
             +2.5% from last month
           </p>
@@ -19,11 +19,13 @@ const StatsCard = () => {
 
       <Card>
         <CardHeader className="flex items-center justify-between">
-          <CardTitle className="text-sm md:text-base">Income</CardTitle>
+          <CardTitle className="text-sm md:text-base ">Income</CardTitle>
           <ArrowUp className="w-4 h-4" />
         </CardHeader>
         <CardContent>
-          <h1 className="text-lg md:text-2xl font-bold">$12,546.00</h1>
+          <h1 className="text-lg md:text-2xl font-bold text-emerald-600">
+            $12,546.00
+          </h1>
           <p className="text-neutral-500 text-xs md:text-sm">
             +2.5% from last month
           </p>
@@ -32,11 +34,13 @@ const StatsCard = () => {
 
       <Card>
         <CardHeader className="flex items-center justify-between">
-          <CardTitle className="text-sm md:text-base">Total Balance</CardTitle>
+          <CardTitle className="text-sm md:text-base">Expense</CardTitle>
           <ArrowDown className="w-4 h-4" />
         </CardHeader>
         <CardContent>
-          <h1 className="text-lg md:text-2xl font-bold">$12,546.00</h1>
+          <h1 className="text-lg md:text-2xl font-bold text-rose-600">
+            $12,546.00
+          </h1>
           <p className="text-neutral-500 text-xs md:text-sm">
             +2.5% from last month
           </p>
@@ -45,11 +49,13 @@ const StatsCard = () => {
 
       <Card>
         <CardHeader className="flex items-center justify-between">
-          <CardTitle className="text-sm md:text-base">Total Balance</CardTitle>
+          <CardTitle className="text-sm md:text-base">Savings</CardTitle>
           <DollarSign className="w-4 h-4" />
         </CardHeader>
         <CardContent>
-          <h1 className="text-lg md:text-2xl font-bold">$12,546.00</h1>
+          <h1 className="text-lg md:text-2xl font-bold text-yellow-600">
+            $12,546.00
+          </h1>
           <p className="text-neutral-500 text-xs md:text-sm">
             +2.5% from last month
           </p>

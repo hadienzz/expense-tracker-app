@@ -1,11 +1,10 @@
 const prisma = require("../../config/db");
 
-const createTransactionService = async (data) => {
-  // console.log(data);
+const createTransactionService = async (data, user_id) => {
   const submitData = {
     ...data,
+    user_id,
     amount: parseFloat(data.amount),
-    user_id: "apaajabebas",
     currency: "IDR",
   };
   const result = await prisma.transaction.create({
@@ -14,13 +13,26 @@ const createTransactionService = async (data) => {
   return result;
 };
 
-const getTransactionService = async (userId) => {
+const getTransactionService = async (user_id) => {
   const result = await prisma.transaction.findMany({
     where: {
-      user_id: userId,
+      user_id,
     },
   });
   return result;
 };
 
-module.exports = { createTransactionService, getTransactionService };
+const deleteTransactionService = async (id) => {
+  const result = await prisma.transaction.delete({
+    where: {
+      id: parseFloat(id),
+    },
+  });
+  return result;
+};
+
+module.exports = {
+  createTransactionService,
+  getTransactionService,
+  deleteTransactionService,
+};

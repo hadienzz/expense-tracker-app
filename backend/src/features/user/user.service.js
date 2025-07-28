@@ -1,8 +1,11 @@
+require("dotenv").config();
+
 const prisma = require("../../config/db");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const { generateToken, setAuthCookie } = require("../../utils/auth");
 
-const loginUserService = async (email, password) => {
+const loginUserService = async (email, password, res) => {
   const user = await prisma.user.findUnique({ where: { email } });
 
   if (!user) {
@@ -15,18 +18,19 @@ const loginUserService = async (email, password) => {
     throw new Error("Invalid credentials");
   }
 
-  return result;
+  const token = generateToken({ user_id: user.id });
+  setAuthCookie(res, token);
+  return token;
 };
 
-const createUserService = async (email, password) => {
-  if (!email || !password) {
-    return res.status(400).json({ message: "Incomplete data" });
-  }
-
+const createUserService = async (firstName, lastName, email, password) => {
   const hashedPassword = await bcrypt.hash(password, 10);
+
   const result = await prisma.user.create({
     data: {
       email,
+      firstName,
+      lastName,
       password: hashedPassword,
     },
   });
