@@ -2,6 +2,7 @@ const {
   createTransactionService,
   getTransactionService,
   deleteTransactionService,
+  getSummaryService,
 } = require("./transaction.service");
 
 const createTransaction = async (req, res) => {
@@ -41,4 +42,21 @@ const deleteTransaction = async (req, res) => {
   }
 };
 
-module.exports = { createTransaction, getTransaction, deleteTransaction };
+const getSummaryTransaction = async (req, res) => {
+  const { user_id } = req.user;
+  try {
+    const result = await getSummaryService(user_id);
+
+    return res.status(200).json({ message: "Berhasil mendapatkan summary" });
+  } catch (err) {
+    console.error(err);
+    return res.status(400).json({ message: "Gagal mendapatkan summary" });
+  }
+};
+
+module.exports = {
+  createTransaction,
+  getTransaction,
+  deleteTransaction,
+  getSummaryTransaction,
+};

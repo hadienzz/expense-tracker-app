@@ -1,19 +1,24 @@
 import { Wallet } from "lucide-react";
 import React from "react";
 import { NAV_ITEM } from "../../../contents/contents_data";
+import Link from "next/link";
 
 interface NavItemProps {
   icon: React.ReactNode;
   label: string;
+  url: string;
   active?: boolean;
 }
 
-const NavItem = ({ icon, label, active }: NavItemProps) => {
+const NavItem = ({ icon, label, url, active }: NavItemProps) => {
   return (
-    <div className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-all hover:bg-accent">
+    <Link
+      className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-all hover:bg-accent"
+      href={url}
+    >
       {icon}
       <span>{label}</span>
-    </div>
+    </Link>
   );
 };
 

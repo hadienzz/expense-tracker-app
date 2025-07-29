@@ -1,9 +1,13 @@
+"use client";
+
+import useGetBudget from "@/hooks/useGetBudget";
 import { Button } from "../ui/button";
 import { Card, CardContent, CardHeader } from "../ui/card";
 import BudgetProgressItem from "./budget-progress-item";
 import DialogBudgeting from "./dialog-budgeting";
 
 const BudgetProgress = () => {
+  const { data, isLoading } = useGetBudget();
   return (
     <Card className="">
       <CardHeader className="text-center">
@@ -14,10 +18,14 @@ const BudgetProgress = () => {
         <DialogBudgeting>
           <Button>+ Add Budget</Button>
         </DialogBudgeting>
-        <h1 className="text-lg text-center text-neutral-500">Set Your Budget Now!</h1>
-        {/* <BudgetProgressItem id={1} limit="400" category="Food" /> */}
-        {/* <BudgetProgressItem id={2} limit="400" category="Transportation" /> */}
-        {/* <BudgetProgressItem id={3} limit="400" category="Housing" /> */}
+        <h1 className="text-lg text-center text-neutral-500">
+          Set Your Budget Now!
+        </h1>
+        {isLoading && <p>Loading...</p>}
+        {!isLoading &&
+          data.map((item: any) => {
+            return <BudgetProgressItem {...item} key={item.id} />;
+          })}
       </CardContent>
     </Card>
   );

@@ -18,7 +18,6 @@ const App = () => {
         <div className="col-span-3 lg:col-span-1  ">
           <BudgetProgress />
         </div>
-        <div></div>
       </div>
     </DashboardLayout>
   );

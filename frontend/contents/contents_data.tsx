@@ -11,15 +11,20 @@ import { JSX } from "react";
 type NavItem = {
   icon: JSX.Element;
   label: string;
+  url: string;
 };
 
 export const NAV_ITEM: NavItem[] = [
-  { icon: <Home className="w-4 h-4" />, label: "Dashboard" },
-  { icon: <CreditCard className="w-4 h-4" />, label: "Transactions" },
-  { icon: <BarChart4 className="w-4 h-4" />, label: "Analytics" },
-  { icon: <Calendar className="w-4 h-4" />, label: "Budget" },
-  { icon: <PieChart className="w-4 h-4" />, label: "Reports" },
-  { icon: <Settings className="w-4 h-4" />, label: "Settings" },
+  { icon: <Home className="w-4 h-4" />, label: "Dashboard", url: "/" },
+  { icon: <CreditCard className="w-4 h-4" />, label: "Transactions", url: "" },
+  {
+    icon: <BarChart4 className="w-4 h-4" />,
+    label: "Analytics",
+    url: "/analytics",
+  },
+  { icon: <Calendar className="w-4 h-4" />, label: "Budget", url: "" },
+  { icon: <PieChart className="w-4 h-4" />, label: "Reports", url: "" },
+  { icon: <Settings className="w-4 h-4" />, label: "Settings", url: "" },
 ];
 
 type TransactionItem = {

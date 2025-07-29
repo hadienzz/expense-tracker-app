@@ -1,7 +1,8 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useFormik } from "formik";
 import { toast } from "sonner";
 import validation from "./validation";
+import axios from "axios";
 
 export interface FormBudgetValues {
   category: string;
@@ -9,17 +10,32 @@ export interface FormBudgetValues {
 }
 
 const useAddBudget = () => {
+  const queryClient = useQueryClient();
   const { budgetingValidationSchema } = validation();
 
   const { mutate } = useMutation({
     mutationFn: async (body: FormBudgetValues) => {
       try {
+        if (body.limit <= 0) {
+          return toast.error("Limit tidak bisa 0 atau minus");
+        }
+
+        const response = await axios.post(
+          "http://localhost:3001/api/budgeting",
+          body,
+          { withCredentials: true }
+        );
+        toast.success(`Berhasil membuat budget ${body.category}`);
+        return response.data;
       } catch (err) {
         toast.error(`Gagal membuat budget ${formik.values.category}`);
         console.error(err);
       }
     },
-    mutationKey: ["budget", "transaction"],
+    mutationKey: ["budget"],
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["budget"] });
+    },
   });
 
   const formik = useFormik<FormBudgetValues>({

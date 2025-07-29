@@ -16,6 +16,7 @@ interface transactionItemProps {
   type: string;
   date: string;
   id: number;
+  category: string;
   handleDelete: (id: number) => void;
 }
 
@@ -27,6 +28,7 @@ const TransactionItem = ({
   date,
   id,
   handleDelete,
+  category,
 }: transactionItemProps) => {
   return (
     <div className="flex items-center justify-between bg-background border rounded-lg p-3">
@@ -46,7 +48,10 @@ const TransactionItem = ({
           <h1 className="font-medium md:text-lg text-sm line-clamp-1">
             {title}
           </h1>
-          <p className="text-neutral-600 text-xs md:text-base">{date}</p>
+          <div className="flex items-center gap-4 pt-2">
+            <p className="text-neutral-600 text-xs md:text-base">{date}</p>
+            <Badge variant={"outline"}>{category}</Badge>
+          </div>
         </div>
       </div>
       <div className="flex gap-4 items-center">

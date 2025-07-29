@@ -65,7 +65,7 @@ const TransactionList = () => {
             />
           </div>
         </div>
-        <div className="mt-4 flex flex-col gap-4">
+        <div className="mt-4 flex flex-col-reverse gap-4">
           {isLoading!! && <h1>Fetching data...</h1>}
           {!isLoading!! &&
             data.map((item: any) => (

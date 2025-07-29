@@ -28,7 +28,6 @@ const useForm = () => {
           { withCredentials: true }
         );
         toast.success("Data berhasil disimpan");
-        queryClient.invalidateQueries({ queryKey: ["transaction"] });
 
         return response.data;
       } catch (err) {
@@ -38,6 +37,8 @@ const useForm = () => {
       }
     },
     onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["transaction"] });
+      queryClient.invalidateQueries({ queryKey: ["budget"] });
       formik.resetForm();
     },
   });

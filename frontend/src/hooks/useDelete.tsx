@@ -20,6 +20,7 @@ const useDelete = () => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["transaction"] });
+      queryClient.invalidateQueries({ queryKey: ["budget"] });
     },
   });
 
