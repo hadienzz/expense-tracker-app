@@ -1,4 +1,4 @@
-import { TriangleAlert } from "lucide-react";
+import { Activity, TriangleAlert } from "lucide-react";
 import { Progress } from "../ui/progress";
 import { formatPrice } from "@/lib/formatValue";
 
@@ -33,8 +33,12 @@ const BudgetProgressItem = ({
         <Progress value={progress} />
       </div>
       <div className="flex justify-between items-center text-neutral-600">
-        <h1 className="text-xs ">{progress.toFixed(2)}% used</h1>
-        <TriangleAlert className={`${over ? "text-red-600" : ""}`} />
+        <h1 className="text-xs ">{progress}% used</h1>
+        {over ? (
+          <TriangleAlert className={"text-red-600"} />
+        ) : (
+          <Activity className="text-green-600" />
+        )}
       </div>
     </div>
   );

@@ -54,7 +54,8 @@ const TransactionItem = ({
           </div>
         </div>
       </div>
-      <div className="flex gap-4 items-center">
+
+      <div className="flex items-center justify-between text-right min-w-[200px]  ">
         <Badge
           variant={"outline"}
           className="bg-background rounded-xl text-xs md:text-base"
@@ -62,11 +63,10 @@ const TransactionItem = ({
           {type}
         </Badge>
         <div
-          className={`text-xs md:text-base ${
+          className={`text-xs md:text-base  ${
             type === "Income" ? "text-emerald-600" : "text-rose-600"
           }`}
         >
-          {/* {formatprice} */}
           Rp. {formatPrice(Number(amount))}
         </div>
         <DropdownMenu>

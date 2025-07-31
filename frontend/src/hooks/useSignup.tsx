@@ -3,7 +3,8 @@
 import { useMutation } from "@tanstack/react-query";
 import { useFormik } from "formik";
 import validation from "./validation";
-import axios from "axios";
+// import axios from "axios";
+import axios from "../lib/axios";
 import { toast } from "sonner";
 
 export interface SignUpFormValue {
@@ -21,12 +22,14 @@ const useSignup = () => {
       try {
         const { email, firstName, lastName, password } = values;
         console.log(values);
-        const response = await axios.post(
-          "http://localhost:3001/api/user/signup",
-          { email, firstName, lastName, password }
-        );
+        const response = await axios.post("/user/signup", {
+          email,
+          firstName,
+          lastName,
+          password,
+        });
         toast.success("Berhasil membuat akun");
-        console.log(response)
+        console.log(response);
         return response.data;
       } catch (err) {
         toast.error("Gagal membuat akun");

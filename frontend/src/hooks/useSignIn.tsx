@@ -1,8 +1,10 @@
 "use client";
 
+import axiosInstance from "@/lib/axios";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { useFormik } from "formik";
+import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 
 export interface SignInValue {
@@ -11,15 +13,16 @@ export interface SignInValue {
 }
 
 const useSignIn = () => {
+  const router = useRouter()
+
   const { mutate, isPending } = useMutation({
     mutationFn: async (values: SignInValue) => {
       try {
-        const response = await axios.post(
-          "http://localhost:3001/api/user/signin",
-          values,
-          { withCredentials: true }
-        );
+        const response = await axiosInstance.post("user/signin", values, {
+          withCredentials: true,
+        });
         toast.success("Redirecting...");
+        router.push('/')
         return response.data;
       } catch (err) {
         console.error(err);

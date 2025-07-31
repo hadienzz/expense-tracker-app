@@ -7,7 +7,7 @@ interface AnalyticsLayoutProps {
 
 const AnalyticsLayout = ({ children }: AnalyticsLayoutProps) => {
   return (
-    <main className="flex ">
+    <main className="flex overflow-hidden">
       <div>
         <Sidebar />
       </div>

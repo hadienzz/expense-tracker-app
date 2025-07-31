@@ -1,22 +1,21 @@
-"use client";
-
-import { useQuery } from "@tanstack/react-query";
 import axiosInstance from "@/lib/axios";
+import { useQuery } from "@tanstack/react-query";
+import { toast } from "sonner";
 
-const useGetTransaction = () => {
+const useGetBudgetSummary = () => {
   const { data, isLoading } = useQuery({
+    queryKey: ["budget"],
     queryFn: async () => {
       try {
-        const response = await axiosInstance.get("/transaction", {
+        const response = await axiosInstance.get("/transaction/summary", {
           withCredentials: true,
         });
         return response.data;
       } catch (err) {
         console.error(err);
+        toast.error("Gagal mendapatkan data summary");
       }
     },
-
-    queryKey: ["transaction"],
   });
 
   return {
@@ -25,4 +24,4 @@ const useGetTransaction = () => {
   };
 };
 
-export default useGetTransaction;
+export default useGetBudgetSummary;

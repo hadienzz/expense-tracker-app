@@ -40,12 +40,26 @@ const getSummaryService = async (user_id) => {
     },
     _sum: { amount: true },
   });
-  const result = transaction.map((item) => ({
+  const transactionSummary = transaction.map((item) => ({
     category: item.category,
     total: item._sum.amount || 0,
   }));
 
-  return result;
+  const income = await prisma.transaction.groupBy({
+    by: ["category"],
+    where: {
+      user_id,
+      type: "Income",
+    },
+    _sum: { amount: true },
+  });
+
+  const incomeSummary = income.map((item) => ({
+    category: item.category,
+    total: item._sum.amount || 0,
+  }));
+
+  return { transactionSummary, incomeSummary };
 };
 
 module.exports = {

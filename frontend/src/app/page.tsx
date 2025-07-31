@@ -1,21 +1,23 @@
-import Header from "@/components/custom/header";
+"use client";
+
 import DashboardLayout from "@/components/layouts/dashboard-layout";
-import Sidebar from "@/components/custom/sidebar";
 import StatsCard from "@/components/custom/stats-card";
 import TransactionList from "@/components/custom/transaction-list";
-import BudgetProgress from "@/components/custom/expense-chart";
+import BudgetProgress from "@/components/custom/budget-progress";
+import useGetTransaction from "@/hooks/useGetTransaction";
 
 const App = () => {
+  const { data, isLoading } = useGetTransaction();
   return (
     <DashboardLayout>
       <div className="grid gap-6">
-        <StatsCard />
+        <StatsCard data={data} isLoading={isLoading} />
       </div>
       <div className="grid grid-cols-3 mt-6 gap-4">
         <div className="col-span-3 lg:col-span-2">
-          <TransactionList />
+          <TransactionList data={data} isLoading={isLoading} />
         </div>
-        <div className="col-span-3 lg:col-span-1  ">
+        <div className="col-span-3 lg:col-span-1">
           <BudgetProgress />
         </div>
       </div>

@@ -1,11 +1,10 @@
 "use client";
 
-import axios from "axios";
 import { useFormik } from "formik";
 import validation from "./validation";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
-
+import axiosInstance from "@/lib/axios";
 export interface FormValues {
   title: string;
   type: string;
@@ -22,11 +21,9 @@ const useForm = () => {
   const { mutate, isPending } = useMutation({
     mutationFn: async (values: FormValues) => {
       try {
-        const response = await axios.post(
-          "http://localhost:3001/api/transaction",
-          values,
-          { withCredentials: true }
-        );
+        const response = await axiosInstance.post("/transaction", values, {
+          withCredentials: true,
+        });
         toast.success("Data berhasil disimpan");
 
         return response.data;

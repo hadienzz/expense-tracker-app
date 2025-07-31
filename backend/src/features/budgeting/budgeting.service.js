@@ -37,8 +37,8 @@ const getBudgetingService = async (user_id) => {
       budget: budget.limit,
       used,
       limit: budget.limit,
-      over: used > budget.limit,
-      progress: (used / budget.limit) * 100,
+      over: used >= budget.limit,
+      progress: ((used / budget.limit) * 100).toFixed(1),
     };
   });
   return progress;

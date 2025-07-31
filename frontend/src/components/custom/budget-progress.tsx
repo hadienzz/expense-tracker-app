@@ -18,14 +18,17 @@ const BudgetProgress = () => {
         <DialogBudgeting>
           <Button>+ Add Budget</Button>
         </DialogBudgeting>
-        <h1 className="text-lg text-center text-neutral-500">
-          Set Your Budget Now!
-        </h1>
+        {!isLoading && data?.length === 0 && (
+          <h1 className="text-lg text-center text-neutral-500">
+            Set Your Budget Now!
+          </h1>
+        )}
         {isLoading && <p>Loading...</p>}
         {!isLoading &&
-          data.map((item: any) => {
-            return <BudgetProgressItem {...item} key={item.id} />;
-          })}
+          Array.isArray(data) &&
+          data.map((item: any, idx: number) => (
+            <BudgetProgressItem {...item} key={idx} />
+          ))}
       </CardContent>
     </Card>
   );

@@ -9,7 +9,7 @@ const createBudgeting = (req, res) => {
   try {
     const result = createBudgetingService(category, limit, user_id);
 
-    return res.status(201).json({ messaeg: "Berhasil membuat budget" });
+    return res.status(201).json({ message: "Berhasil membuat budget" });
   } catch (err) {
     console.error(err);
     return res.status(400).json({ message: "Gagal membuat budget" });

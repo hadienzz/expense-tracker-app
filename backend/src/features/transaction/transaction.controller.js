@@ -47,12 +47,14 @@ const getSummaryTransaction = async (req, res) => {
   try {
     const result = await getSummaryService(user_id);
 
-    return res.status(200).json({ message: "Berhasil mendapatkan summary" });
+    return res.status(200).json(result);
   } catch (err) {
     console.error(err);
     return res.status(400).json({ message: "Gagal mendapatkan summary" });
   }
 };
+
+
 
 module.exports = {
   createTransaction,

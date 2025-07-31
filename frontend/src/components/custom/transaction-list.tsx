@@ -21,10 +21,39 @@ import TransactionItem from "./transactions-item";
 import { TRANSACTION_ITEM } from "../../../contents/contents_data";
 import useGetTransaction from "@/hooks/useGetTransaction";
 import useDelete from "@/hooks/useDelete";
+import { useState } from "react";
+import useFilterTransaction from "@/hooks/useFilterTransaction";
 
-const TransactionList = () => {
-  const { data, isLoading } = useGetTransaction();
+interface Transaction {
+  id: string;
+  user_id: string;
+  title: string;
+  amount: number;
+  type: "Income" | "Expense";
+  currency: string;
+  date: string;
+  notes: string;
+  category: string;
+  createdAt: string;
+}
+
+interface TransactionListProps {
+  data: Transaction[];
+  isLoading: boolean;
+}
+
+const TransactionList = ({ data, isLoading }: TransactionListProps) => {
   const { handleDelete } = useDelete();
+
+  const { filterType, setFilterType, handleLoadMore, visibleCount } =
+    useFilterTransaction();
+
+  const filteredData =
+    filterType === "all"
+      ? data
+      : data?.filter((item: any) => item.type === filterType);
+
+  const visibleData = filteredData?.slice(-visibleCount);
 
   return (
     <Card>
@@ -42,7 +71,10 @@ const TransactionList = () => {
             <Filter />
             <h1 className="">Filter</h1>
           </Button>
-          <Select defaultValue="all">
+          <Select
+            defaultValue="all"
+            onValueChange={(type) => setFilterType(type)}
+          >
             <SelectTrigger className="w-[180px]">
               <SelectValue placeholder="Select" />
             </SelectTrigger>
@@ -65,21 +97,34 @@ const TransactionList = () => {
             />
           </div>
         </div>
-        <div className="mt-4 flex flex-col-reverse gap-4">
-          {isLoading!! && <h1>Fetching data...</h1>}
-          {!isLoading!! &&
-            data.map((item: any) => (
-              <TransactionItem
-                {...item}
-                key={item.id}
-                handleDelete={handleDelete}
-              />
-            ))}
-          {!isLoading!! && data.length === 0 && (
-            <div>
-              <h1 className="text-center text-neutral-400">
-                Kamu belum membuat transaksi
-              </h1>
+        <div className="mt-4  w-full gap-4">
+          <div className="flex flex-col-reverse">
+            {isLoading!! && <h1>Fetching data...</h1>}
+            {!isLoading!! &&
+              visibleData?.map((item: any) => (
+                <TransactionItem
+                  {...item}
+                  key={item.id}
+                  handleDelete={handleDelete}
+                />
+              ))}
+            {!isLoading!! && data?.length === 0 && (
+              <div>
+                <h1 className="text-center text-neutral-400">
+                  Kamu belum membuat transaksi
+                </h1>
+              </div>
+            )}
+          </div>
+          {visibleData?.length < filteredData?.length && (
+            <div className="flex items-center justify-center py-4">
+              <Button
+                onClick={handleLoadMore}
+                className="mx-auto  text-lg"
+                variant={"outline"}
+              >
+                Load More
+              </Button>
             </div>
           )}
         </div>

@@ -2,7 +2,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useFormik } from "formik";
 import { toast } from "sonner";
 import validation from "./validation";
-import axios from "axios";
+import axiosInstance from "@/lib/axios";
 
 export interface FormBudgetValues {
   category: string;
@@ -20,11 +20,9 @@ const useAddBudget = () => {
           return toast.error("Limit tidak bisa 0 atau minus");
         }
 
-        const response = await axios.post(
-          "http://localhost:3001/api/budgeting",
-          body,
-          { withCredentials: true }
-        );
+        const response = await axiosInstance.post("/budgeting", body, {
+          withCredentials: true,
+        });
         toast.success(`Berhasil membuat budget ${body.category}`);
         return response.data;
       } catch (err) {

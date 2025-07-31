@@ -23,6 +23,7 @@ import {
 } from "../ui/select";
 import { Button } from "../ui/button";
 import useForm, { FormValues } from "@/hooks/useForm";
+import FormInput from "./form-input";
 
 interface AddTransactionDialogProps {
   children: React.ReactNode;
@@ -95,11 +96,10 @@ const TransactionFormFields = ({
         </SelectContent>
       </Select>
     </div>
-
     <div className="grid gap-2">
-      <Label>Date</Label>
-      <Input
+      <FormInput
         required
+        label="Date"
         type="date"
         name="date"
         onChange={formik.handleChange}
@@ -108,8 +108,9 @@ const TransactionFormFields = ({
     </div>
 
     <div className="grid gap-2">
-      <Label>Notes (Optional)</Label>
-      <Input
+      <FormInput
+        label="Notes (Optional)"
+        type="text"
         name="notes"
         onChange={formik.handleChange}
         value={formik.values.notes}
@@ -125,7 +126,14 @@ const DialogTransaction = ({ children }: AddTransactionDialogProps) => {
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent className="sm:max-w-[425px] max-h-[90vh] overflow-y-auto border bg-background">
         <DialogHeader>
-          <DialogTitle>Add Transaction</DialogTitle>
+          <DialogTitle>
+            Tambah{" "}
+            {formik.values.type === "Expense"
+              ? "Pengeluaran"
+              : formik.values.type === "Income"
+              ? "Pemasukan"
+              : "Tabungan"}
+          </DialogTitle>
           <DialogDescription>Create a new transaction record</DialogDescription>
         </DialogHeader>
         <form onSubmit={formik.handleSubmit}>
@@ -141,12 +149,15 @@ const DialogTransaction = ({ children }: AddTransactionDialogProps) => {
               });
             }}
           >
-            <TabsList className="w-full grid grid-cols-2">
+            <TabsList className="w-full grid grid-cols-3">
               <TabsTrigger value="Expense" className="cursor-pointer">
-                Expense
+                Pemasukan
               </TabsTrigger>
               <TabsTrigger value="Income" className="cursor-pointer">
-                Income
+                Pengeluaran
+              </TabsTrigger>
+              <TabsTrigger value="Savings" className="cursor-pointer">
+                Tabungan
               </TabsTrigger>
             </TabsList>
             <TabsContent value="Expense">
@@ -160,6 +171,9 @@ const DialogTransaction = ({ children }: AddTransactionDialogProps) => {
                 categories={incomeCategories}
                 formik={formik}
               />
+            </TabsContent>
+            <TabsContent value="Savings">
+              <FormInput name="title" label="Title" />
             </TabsContent>
           </Tabs>
           <DialogFooter>
