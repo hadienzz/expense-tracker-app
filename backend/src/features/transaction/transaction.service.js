@@ -59,6 +59,8 @@ const getSummaryService = async (user_id) => {
     total: item._sum.amount || 0,
   }));
 
+
+
   return { transactionSummary, incomeSummary };
 };
 

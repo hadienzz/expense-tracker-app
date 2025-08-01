@@ -52,6 +52,7 @@ const useForm = () => {
     validationSchema: transactionValidationSchema,
     onSubmit: (values) => {
       mutate(values);
+      console.log(values);
     },
   });
 

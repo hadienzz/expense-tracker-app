@@ -30,7 +30,7 @@ model Transaction {
   currency  String
   date      String
   notes     String
-  category  String
+  category  String?
   createdAt DateTime @default(now())
 }
 

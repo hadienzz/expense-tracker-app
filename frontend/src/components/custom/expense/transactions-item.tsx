@@ -1,12 +1,12 @@
-import { ArrowDown, ArrowUp, MoreHorizontal } from "lucide-react";
-import { Badge } from "../ui/badge";
-import { Card } from "../ui/card";
+import { ArrowDown, ArrowUp, Briefcase, MoreHorizontal } from "lucide-react";
+import { Badge } from "../../ui/badge";
+import { Card } from "../../ui/card";
 import {
   DropdownMenu,
   DropdownMenuItem,
   DropdownMenuContent,
   DropdownMenuTrigger,
-} from "../ui/dropdown-menu";
+} from "../../ui/dropdown-menu";
 import { formatPrice } from "@/lib/formatValue";
 
 interface transactionItemProps {
@@ -35,11 +35,17 @@ const TransactionItem = ({
       <div className={`flex items-center gap-4`}>
         <div
           className={`${
-            type === "Income" ? "bg-emerald-100" : "bg-rose-100"
+            type === "Income"
+              ? "bg-emerald-100"
+              : type === "Savings"
+              ? "bg-yellow-100"
+              : "bg-rose-100"
           } rounded-full p-1 md:p-2`}
         >
           {type === "Income" ? (
             <ArrowUp className="text-emerald-600 h-4 w-4 md:h-5 md:w-5" />
+          ) : type === "Savings" ? (
+            <Briefcase className="text-yellow-600 h-4 w-4 md:h-5 md:w-5" />
           ) : (
             <ArrowDown className="text-rose-600 h-4 w-4 md:h-5 md:w-5" />
           )}
@@ -64,7 +70,11 @@ const TransactionItem = ({
         </Badge>
         <div
           className={`text-xs md:text-base  ${
-            type === "Income" ? "text-emerald-600" : "text-rose-600"
+            type === "Income"
+              ? "text-emerald-600"
+              : type === "Savings"
+              ? "text-yellow-600"
+              : "text-rose-600"
           }`}
         >
           Rp. {formatPrice(Number(amount))}

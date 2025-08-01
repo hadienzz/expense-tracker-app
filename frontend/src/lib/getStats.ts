@@ -7,9 +7,13 @@ const getStats = (data: any) => {
     ?.filter((item: any) => item.type === "Expense")
     .reduce((acc: any, cur: any) => acc + cur.amount, 0);
 
+  const savingTotal = data
+    ?.filter((item: any) => item.type === "Savings")
+    .reduce((acc: any, cur: any) => acc + cur.amount, 0);
+
   const totalBalance = incomeTotal - expenseTotal;
 
-  return { incomeTotal, expenseTotal, totalBalance };
+  return { incomeTotal, expenseTotal, totalBalance, savingTotal };
 };
 
 export default getStats;

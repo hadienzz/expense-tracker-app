@@ -1,7 +1,7 @@
 "use client";
 
-import AuthHeader from "@/components/custom/auth-header";
-import FormInput from "@/components/custom/form-input";
+import AuthHeader from "@/components/custom/shared/auth-header";
+import FormInput from "@/components/custom/shared/form-input";
 import AuthLayout from "@/components/layouts/auth-layout";
 import { Button } from "@/components/ui/button";
 import useSignIn, { SignInValue } from "@/hooks/useSignIn";

@@ -4,16 +4,23 @@ const validation = () => {
   const today = new Date().toISOString().split("T")[0];
 
   const transactionValidationSchema = Yup.object().shape({
-    title: Yup.string().required("Title is required"),
-    type: Yup.string().required("Type is required"),
-    amount: Yup.string().required("Amount is required"),
-    category: Yup.string().required("Category is required"),
-    date: Yup.date()
-      .max(today, "Date cannot be in the future")
-      .required("Date is required"),
+    title: Yup.string().required("Title wajib diisi"),
+    amount: Yup.number()
+      .typeError("Amount harus berupa angka")
+      .required("Amount wajib diisi"),
+    type: Yup.string().required("Tipe wajib diisi"),
+    category: Yup.string().when("type", {
+      is: (val: string) => val !== "Savings",
+      then: (schema) => schema.required("Kategori wajib diisi"),
+      otherwise: (schema) => schema.notRequired(),
+    }),
+    date: Yup.string().when("type", {
+      is: (val: string) => val !== "Savings",
+      then: (schema) => schema.required("Tanggal wajib diisi"),
+      otherwise: (schema) => schema.notRequired(),
+    }),
     notes: Yup.string(),
   });
-
   const signUpValidationSchema = Yup.object().shape({
     firstName: Yup.string().required("First Name Is Required"),
     lastName: Yup.string(),

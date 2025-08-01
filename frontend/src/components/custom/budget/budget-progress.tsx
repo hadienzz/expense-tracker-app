@@ -1,10 +1,10 @@
 "use client";
 
 import useGetBudget from "@/hooks/useGetBudget";
-import { Button } from "../ui/button";
-import { Card, CardContent, CardHeader } from "../ui/card";
+import { Button } from "../../ui/button";
+import { Card, CardContent, CardHeader } from "../../ui/card";
 import BudgetProgressItem from "./budget-progress-item";
-import DialogBudgeting from "./dialog-budgeting";
+import DialogBudgeting from "../shared/dialog-budgeting";
 
 const BudgetProgress = () => {
   const { data, isLoading } = useGetBudget();

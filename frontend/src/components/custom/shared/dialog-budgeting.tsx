@@ -8,8 +8,8 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import { Form } from "../ui/form";
+} from "../../ui/dialog";
+import { Form } from "../../ui/form";
 import FormInput from "./form-input";
 import {
   Select,
@@ -17,8 +17,8 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../ui/select";
-import { Button } from "../ui/button";
+} from "../../ui/select";
+import { Button } from "../../ui/button";
 import useAddBudget, { FormBudgetValues } from "@/hooks/useAddBudget";
 import { FormikProps } from "formik";
 

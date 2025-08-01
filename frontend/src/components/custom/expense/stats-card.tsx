@@ -1,5 +1,5 @@
 import { ArrowDown, ArrowUp, DollarSign, Wallet } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "../../ui/card";
 import { formatPrice } from "@/lib/formatValue";
 import getStats from "@/lib/getStats";
 
@@ -24,7 +24,8 @@ interface StatsCardProps {
 // interface
 
 const StatsCard = ({ data, isLoading }: StatsCardProps) => {
-  const { incomeTotal, expenseTotal, totalBalance } = getStats(data);
+  const { incomeTotal, expenseTotal, savingTotal, totalBalance } =
+    getStats(data);
 
   return (
     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 mt-6">
@@ -80,7 +81,7 @@ const StatsCard = ({ data, isLoading }: StatsCardProps) => {
         </CardHeader>
         <CardContent>
           <h1 className="text-lg md:text-2xl font-bold text-yellow-600">
-            $12,546.00
+            Rp. {formatPrice(savingTotal)}
           </h1>
           <p className="text-neutral-500 text-xs md:text-sm">
             +2.5% from last month

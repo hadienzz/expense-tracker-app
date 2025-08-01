@@ -1,7 +1,7 @@
 "use client";
 
 import { TrendingUp } from "lucide-react";
-import { Card, CardContent, CardHeader } from "../ui/card";
+import { Card, CardContent, CardHeader } from "../../ui/card";
 import useGetBudgetSummary from "@/hooks/useGetBudgetSummary";
 import { Doughnut } from "react-chartjs-2";
 import { formatPrice } from "@/lib/formatValue";

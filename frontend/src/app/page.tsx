@@ -1,9 +1,9 @@
 "use client";
 
 import DashboardLayout from "@/components/layouts/dashboard-layout";
-import StatsCard from "@/components/custom/stats-card";
-import TransactionList from "@/components/custom/transaction-list";
-import BudgetProgress from "@/components/custom/budget-progress";
+import StatsCard from "@/components/custom/expense/stats-card";
+import TransactionList from "@/components/custom/expense/transaction-list";
+import BudgetProgress from "@/components/custom/budget/budget-progress";
 import useGetTransaction from "@/hooks/useGetTransaction";
 
 const App = () => {

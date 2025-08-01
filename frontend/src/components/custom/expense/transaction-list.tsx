@@ -6,7 +6,7 @@ import {
   CardTitle,
   CardDescription,
   CardContent,
-} from "../ui/card";
+} from "../../ui/card";
 import { Filter, Search } from "lucide-react";
 import {
   Select,
@@ -14,14 +14,11 @@ import {
   SelectTrigger,
   SelectContent,
   SelectValue,
-} from "../ui/select";
-import { Button } from "../ui/button";
-import { Input } from "../ui/input";
+} from "../../ui/select";
+import { Button } from "../../ui/button";
+import { Input } from "../../ui/input";
 import TransactionItem from "./transactions-item";
-import { TRANSACTION_ITEM } from "../../../contents/contents_data";
-import useGetTransaction from "@/hooks/useGetTransaction";
 import useDelete from "@/hooks/useDelete";
-import { useState } from "react";
 import useFilterTransaction from "@/hooks/useFilterTransaction";
 
 interface Transaction {
@@ -82,6 +79,7 @@ const TransactionList = ({ data, isLoading }: TransactionListProps) => {
               <SelectItem value="all">All Transactions</SelectItem>
               <SelectItem value="Income">Income</SelectItem>
               <SelectItem value="Expense">Expense</SelectItem>
+              <SelectItem value="Savings">Savings</SelectItem>
             </SelectContent>
           </Select>
         </div>

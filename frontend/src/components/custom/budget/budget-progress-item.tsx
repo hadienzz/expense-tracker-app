@@ -1,5 +1,5 @@
 import { Activity, TriangleAlert } from "lucide-react";
-import { Progress } from "../ui/progress";
+import { Progress } from "../../ui/progress";
 import { formatPrice } from "@/lib/formatValue";
 
 interface BudgetProgressItemProps {

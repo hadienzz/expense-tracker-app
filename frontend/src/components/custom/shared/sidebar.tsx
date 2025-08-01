@@ -1,6 +1,6 @@
 import { Wallet } from "lucide-react";
 import React from "react";
-import { NAV_ITEM } from "../../../contents/contents_data";
+import { NAV_ITEM } from "../../../../contents/contents_data";
 import Link from "next/link";
 
 interface NavItemProps {

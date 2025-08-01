@@ -22,7 +22,7 @@ export const NAV_ITEM: NavItem[] = [
     label: "Analytics",
     url: "/analytics",
   },
-  { icon: <Calendar className="w-4 h-4" />, label: "Budget", url: "" },
+  { icon: <Calendar className="w-4 h-4" />, label: "Budget", url: "/budget" },
   { icon: <PieChart className="w-4 h-4" />, label: "Reports", url: "" },
   { icon: <Settings className="w-4 h-4" />, label: "Settings", url: "" },
 ];

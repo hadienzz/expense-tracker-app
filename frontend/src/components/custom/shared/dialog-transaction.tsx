@@ -10,18 +10,18 @@ import {
   DialogTitle,
   DialogTrigger,
   DialogFooter,
-} from "../ui/dialog";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "../ui/tabs";
-import { Label } from "../ui/label";
-import { Input } from "../ui/input";
+} from "../../ui/dialog";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "../../ui/tabs";
+import { Label } from "../../ui/label";
+import { Input } from "../../ui/input";
 import {
   Select,
   SelectTrigger,
   SelectValue,
   SelectContent,
   SelectItem,
-} from "../ui/select";
-import { Button } from "../ui/button";
+} from "../../ui/select";
+import { Button } from "../../ui/button";
 import useForm, { FormValues } from "@/hooks/useForm";
 import FormInput from "./form-input";
 
@@ -50,6 +50,46 @@ interface TransactionFormFieldsProps {
   categories: { value: string; label: string }[];
   formik: FormikProps<FormValues>;
 }
+
+interface SavingsFormFields {
+  formik: FormikProps<FormValues>;
+}
+
+const SavingsFormFields = ({ formik }: SavingsFormFields) => {
+  return (
+    <div className="space-y-4">
+      <FormInput
+        label="Title"
+        required
+        name="title"
+        value={formik.values.title}
+        onChange={formik.handleChange}
+      />
+      <FormInput
+        label="Amount"
+        type="number"
+        required
+        name="amount"
+        value={formik.values.amount}
+        onChange={formik.handleChange}
+      />
+      <FormInput
+        label="Date"
+        name="date"
+        type="date"
+        required
+        value={formik.values.date}
+        onChange={formik.handleChange}
+      />
+      <FormInput
+        label="Notes (Optional)"
+        name="notes"
+        value={formik.values.notes}
+        onChange={formik.handleChange}
+      />
+    </div>
+  );
+};
 
 const TransactionFormFields = ({
   categories,
@@ -151,10 +191,10 @@ const DialogTransaction = ({ children }: AddTransactionDialogProps) => {
           >
             <TabsList className="w-full grid grid-cols-3">
               <TabsTrigger value="Expense" className="cursor-pointer">
-                Pemasukan
+                Pengeluaran
               </TabsTrigger>
               <TabsTrigger value="Income" className="cursor-pointer">
-                Pengeluaran
+                Pemasukan
               </TabsTrigger>
               <TabsTrigger value="Savings" className="cursor-pointer">
                 Tabungan
@@ -173,7 +213,7 @@ const DialogTransaction = ({ children }: AddTransactionDialogProps) => {
               />
             </TabsContent>
             <TabsContent value="Savings">
-              <FormInput name="title" label="Title" />
+              <SavingsFormFields formik={formik} />
             </TabsContent>
           </Tabs>
           <DialogFooter>

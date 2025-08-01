@@ -1,6 +1,7 @@
-import React from "react";
-import Sidebar from "../custom/sidebar";
-import Header from "../custom/header";
+import React, { useEffect } from "react";
+import Sidebar from "../custom/shared/sidebar";
+import Header from "../custom/shared/header";
+import { useRouter } from "next/navigation";
 
 const DashboardLayout = ({
   children,
