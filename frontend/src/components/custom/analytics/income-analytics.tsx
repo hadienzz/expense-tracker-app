@@ -2,7 +2,6 @@
 
 import { TrendingUp } from "lucide-react";
 import { Card, CardContent, CardHeader } from "../../ui/card";
-import useGetBudgetSummary from "@/hooks/useGetBudgetSummary";
 import { Doughnut } from "react-chartjs-2";
 import { formatPrice } from "@/lib/formatValue";
 import { chartOptions } from "@/lib/chart";
@@ -51,12 +50,10 @@ const IncomeAnalytics = ({ data, isLoading }: IncomeAnalyticsProps) => {
         <CardHeader>
           <div className=" flex justify-center items-center gap-2">
             <TrendingUp className="text-green-600 w-6 h-6" />
-            <h1 className="text-slate-800 font-medium text-lg">
-              Income Sources
-            </h1>
+            <h1 className="text-slate-800 font-medium text-lg lg:text-2xl">Pendapatan</h1>
           </div>
         </CardHeader>
-        <p className="text-center">Breakdown of your income streams</p>
+        <p className="text-center">Rincian aliran pendapatan Anda</p>
         <CardContent className="">
           <article className="">
             {isLoading!! && (
@@ -65,10 +62,8 @@ const IncomeAnalytics = ({ data, isLoading }: IncomeAnalyticsProps) => {
               </div>
             )}
             {totalIncome === 0 ? (
-              <div className="text-center">
-                <h1 className="text-base lg:text-xl">
-                  Kamu belum mempunyai pemasukan
-                </h1>
+              <div className="text-center pt-4">
+                <h1 className="text-base ">Kamu belum mempunyai pemasukan</h1>
                 <p className="text-sm lg:text-base">
                   Silahkan melakukan transaksi untuk melihat visual data
                   pemasukan

@@ -26,17 +26,6 @@ const TabsBreakdown = ({
   return (
     <TabsContent value="breakdown">
       <article className="grid gap-6 lg:grid-cols-2 pt-4">
-        {transactionSummary.length === 0 && (
-          <div className="text-center pt-8">
-            <h1 className="text-slate-900 font-semibold text-xl">
-              Kamu Belum Membuat transaksi apapun
-            </h1>
-            <p className="text-slate-600 text-lg">
-              Buat Transaksi untuk melihat pengeluaran kamu
-            </p>
-          </div>
-        )}
-
         {transactionSummary.length > 0 && (
           <>
             <div>

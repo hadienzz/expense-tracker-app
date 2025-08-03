@@ -1,10 +1,6 @@
-import useGetBudgetSummary from "@/hooks/useGetBudgetSummary";
 import { Card, CardContent, CardHeader } from "../../ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../ui/tabs";
-
-import { Bar, Doughnut, Line } from "react-chartjs-2";
-import CategoryBreakdownItem from "../../custom/analytics/category-breakdown-item";
-import { doughnutOptions, chartOptions } from "../../../lib/chart";
+import { Tabs, TabsList, TabsTrigger } from "../../ui/tabs";
+import { chartOptions } from "../../../lib/chart";
 import { formatPrice } from "@/lib/formatValue";
 import SummaryInsight from "../../custom/analytics/summary-insight";
 import TabsBreakdown from "../../custom/analytics/tabs-breakdown";
@@ -55,10 +51,10 @@ const ExpenseAnalytics = ({ data, isLoading }: ExpenseAnalyticsProps) => {
         <div className="flex items-center justify-between ">
           <div>
             <h1 className="text-slate-900 font-medium text-lg">
-              Expense Analytics
+              Analisis Pengeluaran
             </h1>
             <p className="text-neutral-600">
-              Comprehensive breakdown of your spending patterns
+              Rincian lengkap pola pengeluaran Anda
             </p>
           </div>
           <div>
@@ -71,6 +67,18 @@ const ExpenseAnalytics = ({ data, isLoading }: ExpenseAnalyticsProps) => {
               <TabsTrigger value="breakdown">Category Breakdown</TabsTrigger>
               <TabsTrigger value="insight">Key Insight</TabsTrigger>
             </TabsList>
+
+            {data?.transactionSummary?.length === 0 && (
+              <div className="text-center pt-8 w-full ">
+                <h1 className="text-slate-900 font-semibold text-xl">
+                  Kamu Belum Membuat transaksi apapun
+                </h1>
+                <p className="text-slate-600 text-lg">
+                  Buat Transaksi untuk melihat pengeluaran kamu
+                </p>
+              </div>
+            )}
+
             <TabsBreakdown
               chartData={chartData}
               chartOptions={chartOptions}

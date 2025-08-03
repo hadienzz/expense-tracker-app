@@ -39,5 +39,7 @@ model Budget {
   user_id   String
   category  String
   limit     Float
+  threshold Int
   createdAt DateTime @default(now())
+  lastTransactionAt DateTime?
 }

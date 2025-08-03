@@ -1,10 +1,11 @@
 const prisma = require("../../config/db");
 
-const createBudgetingService = async (category, limit, user_id) => {
+const createBudgetingService = async (category, limit, threshold, user_id) => {
   const result = await prisma.budget.create({
     data: {
       category,
       limit,
+      threshold,
       user_id,
     },
   });
@@ -36,12 +37,42 @@ const getBudgetingService = async (user_id) => {
       category: budget.category,
       budget: budget.limit,
       used,
+      lastTransactionAt: budget.lastTransactionAt,
+      threshold: budget.threshold,
       limit: budget.limit,
       over: used >= budget.limit,
-      progress: ((used / budget.limit) * 100).toFixed(1),
+      progress: (used / budget.limit) * 100,
     };
   });
   return progress;
 };
 
-module.exports = { createBudgetingService, getBudgetingService };
+const deleteBudgetService = async (id) => {
+  const result = prisma.budget.delete({
+    where: {
+      id: Number(id),
+    },
+  });
+  return result;
+};
+
+const editBudgetService = async (id, limit, threshold) => {
+  const result = await prisma.budget.update({
+    where: {
+      id: Number(id),
+    },
+    data: {
+      limit,
+      threshold,
+    },
+  });
+
+  return result;
+};
+
+module.exports = {
+  createBudgetingService,
+  getBudgetingService,
+  deleteBudgetService,
+  editBudgetService,
+};

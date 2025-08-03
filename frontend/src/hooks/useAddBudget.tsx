@@ -7,6 +7,7 @@ import axiosInstance from "@/lib/axios";
 export interface FormBudgetValues {
   category: string;
   limit: number;
+  threshold: number;
 }
 
 const useAddBudget = () => {
@@ -40,6 +41,7 @@ const useAddBudget = () => {
     initialValues: {
       category: "",
       limit: 0,
+      threshold: 80,
     },
     validationSchema: budgetingValidationSchema,
     onSubmit: (values) => {

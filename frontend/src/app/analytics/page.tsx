@@ -3,11 +3,11 @@
 import AnalyticsLayout from "@/components/layouts/analytics-layout";
 import ExpenseAnalytics from "@/components/custom/expense/expense-analytics";
 import IncomeAnalytics from "@/components/custom/analytics/income-analytics";
-import useGetBudgetSummary from "@/hooks/useGetBudgetSummary";
 import { TrendingUp } from "lucide-react";
+import useGetTransactionSummary from "@/hooks/useGetBudgetSummary";
 
 const AnalyticPage = () => {
-  const { data, isLoading } = useGetBudgetSummary();
+  const { data, isLoading } = useGetTransactionSummary();
   return (
     <AnalyticsLayout
       icon={<TrendingUp className="text-blue-600 w-8 h-8" />}

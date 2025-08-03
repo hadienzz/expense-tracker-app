@@ -2,7 +2,7 @@ import axiosInstance from "@/lib/axios";
 import { useQuery } from "@tanstack/react-query";
 import { toast } from "sonner";
 
-const useGetBudgetSummary = () => {
+const useGetTransactionSummary = () => {
   const { data, isLoading } = useQuery({
     queryKey: ["budget"],
     queryFn: async () => {
@@ -24,4 +24,4 @@ const useGetBudgetSummary = () => {
   };
 };
 
-export default useGetBudgetSummary;
+export default useGetTransactionSummary;

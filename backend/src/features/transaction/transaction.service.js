@@ -7,8 +7,19 @@ const createTransactionService = async (data, user_id) => {
     amount: parseFloat(data.amount),
     currency: "IDR",
   };
+
   const result = await prisma.transaction.create({
     data: submitData,
+  });
+
+  const updateBudget = await prisma.budget.updateMany({
+    where: {
+      user_id,
+      category: submitData.category,
+    },
+    data: {
+      lastTransactionAt: new Date(),
+    },
   });
   return result;
 };
@@ -58,8 +69,6 @@ const getSummaryService = async (user_id) => {
     category: item.category,
     total: item._sum.amount || 0,
   }));
-
-
 
   return { transactionSummary, incomeSummary };
 };
