@@ -1,27 +1,29 @@
+"use client";
+
 import axiosInstance from "@/lib/axios";
 import { useQuery } from "@tanstack/react-query";
 import { toast } from "sonner";
 
-const useGetTransactionSummary = () => {
+const useGetGoals = () => {
   const { data, isLoading } = useQuery({
-    queryKey: ["budget"],
+    queryKey: ["goals"],
     queryFn: async () => {
       try {
-        const response = await axiosInstance.get("/transaction/summary", {
+        const response = await axiosInstance.get("/goals", {
           withCredentials: true,
         });
+
         return response.data;
       } catch (err) {
         console.error(err);
-        return toast.error("Gagal mendapatkan data summary");
+        return toast.error("Gagal mendapatkan target");
       }
     },
   });
-
   return {
     data,
     isLoading,
   };
 };
 
-export default useGetTransactionSummary;
+export default useGetGoals;

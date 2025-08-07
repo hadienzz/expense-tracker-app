@@ -27,7 +27,7 @@ const useAddBudget = () => {
         toast.success(`Berhasil membuat budget ${body.category}`);
         return response.data;
       } catch (err) {
-        toast.error(`Gagal membuat budget ${formik.values.category}`);
+      return  toast.error(`Gagal membuat budget ${formik.values.category}`);
         console.error(err);
       }
     },

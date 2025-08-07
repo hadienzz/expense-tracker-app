@@ -55,8 +55,8 @@ const useSmartInsight = ({ transactionData }: UseSmartInsightProps) => {
     {
       title: "Paling Hemat 💡",
       sentence: `Kategori dengan pengeluaran paling sedikit adalah "${
-        top4?.category
-      }" sebesar Rp. ${top4?.total.toLocaleString()} `,
+        sorted?.at(-1)?.category
+      }" sebesar Rp. ${sorted.at(-1)?.total?.toLocaleString()} `,
       backgroundColor:
         "bg-gradient-to-r from-yellow-50 to-yellow-100 rounded-lg border border-yellow-200",
       titleColor: "text-yellow-900",

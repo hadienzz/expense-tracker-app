@@ -13,7 +13,7 @@ export interface SignInValue {
 }
 
 const useSignIn = () => {
-  const router = useRouter()
+  const router = useRouter();
 
   const { mutate, isPending } = useMutation({
     mutationFn: async (values: SignInValue) => {
@@ -22,11 +22,11 @@ const useSignIn = () => {
           withCredentials: true,
         });
         toast.success("Redirecting...");
-        router.push('/')
+        router.push("/");
         return response.data;
       } catch (err) {
         console.error(err);
-        toast.error("Data tidak ditemukan");
+        return toast.error("Data tidak ditemukan");
       }
     },
   });

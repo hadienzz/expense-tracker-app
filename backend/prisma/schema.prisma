@@ -35,11 +35,23 @@ model Transaction {
 }
 
 model Budget {
-  id        Int      @id @default(autoincrement())
-  user_id   String
-  category  String
-  limit     Float
-  threshold Int
-  createdAt DateTime @default(now())
+  id                Int       @id @default(autoincrement())
+  user_id           String
+  category          String
+  limit             Float
+  threshold         Int
+  createdAt         DateTime  @default(now())
   lastTransactionAt DateTime?
+}
+
+model Goals {
+  id            Int       @id @default(autoincrement())
+  user_id       String
+  title         String
+  type          String
+  description   String?
+  currentAmount BigInt
+  targetAmount  BigInt
+  targetDate    String?
+  priorityLevel String
 }

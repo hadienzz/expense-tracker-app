@@ -29,10 +29,9 @@ const useSignup = () => {
           password,
         });
         toast.success("Berhasil membuat akun");
-        console.log(response);
         return response.data;
       } catch (err) {
-        toast.error("Gagal membuat akun");
+        return toast.error("Gagal membuat akun");
         console.error(err);
       }
     },

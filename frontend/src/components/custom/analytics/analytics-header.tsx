@@ -1,5 +1,3 @@
-import { TrendingUp } from "lucide-react";
-import DashboardLayout from "../../layouts/dashboard-layout";
 import React, { JSX } from "react";
 
 interface AnalyticHeaderProps {

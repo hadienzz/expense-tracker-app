@@ -22,7 +22,7 @@ const useDeleteBudget = () => {
 
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["budget"] });
-      toast.success("Berhasil menghapus budget");
+      return toast.success("Berhasil menghapus budget");
     },
   });
 

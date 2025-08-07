@@ -16,15 +16,13 @@ type NavItem = {
 
 export const NAV_ITEM: NavItem[] = [
   { icon: <Home className="w-4 h-4" />, label: "Dashboard", url: "/" },
-  { icon: <CreditCard className="w-4 h-4" />, label: "Transactions", url: "" },
   {
     icon: <BarChart4 className="w-4 h-4" />,
     label: "Analytics",
     url: "/analytics",
   },
   { icon: <Calendar className="w-4 h-4" />, label: "Budget", url: "/budget" },
-  { icon: <PieChart className="w-4 h-4" />, label: "Reports", url: "" },
-  { icon: <Settings className="w-4 h-4" />, label: "Settings", url: "" },
+  { icon: <CreditCard className="w-4 h-4" />, label: "Goals", url: "/goals" },
 ];
 
 type TransactionItem = {

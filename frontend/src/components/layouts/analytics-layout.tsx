@@ -1,3 +1,5 @@
+'use client'
+
 import React, { JSX } from "react";
 import Sidebar from "../custom/shared/sidebar";
 import AnalyticsHeader from "../custom/analytics/analytics-header";

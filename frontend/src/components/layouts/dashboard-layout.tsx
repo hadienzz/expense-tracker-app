@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useEffect } from "react";
 import Sidebar from "../custom/shared/sidebar";
 import Header from "../custom/shared/header";

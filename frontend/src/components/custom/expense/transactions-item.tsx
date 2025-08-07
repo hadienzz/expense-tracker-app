@@ -1,6 +1,5 @@
 import { ArrowDown, ArrowUp, Briefcase, MoreHorizontal } from "lucide-react";
 import { Badge } from "../../ui/badge";
-import { Card } from "../../ui/card";
 import {
   DropdownMenu,
   DropdownMenuItem,

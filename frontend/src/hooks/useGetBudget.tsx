@@ -13,7 +13,7 @@ const useGetBudget = () => {
         return response.data;
       } catch (err) {
         console.error(err);
-        toast.error("Gagal mendapatkan budget");
+        return toast.error("Gagal mendapatkan budget");
       }
     },
     queryKey: ["budget"],

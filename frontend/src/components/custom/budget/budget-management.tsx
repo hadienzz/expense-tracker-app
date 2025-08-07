@@ -9,7 +9,7 @@ import {
 import BudgetItem from "./budget-item";
 import DialogBudgeting from "../shared/dialog-budgeting";
 
-interface dataItem {
+export interface dataItem {
   budget: number;
   category: string;
   id: number;
@@ -17,6 +17,7 @@ interface dataItem {
   over: boolean;
   progress: number;
   used: number;
+  lastTransactionAt: string;
 }
 
 export interface BudgetManagementProps {

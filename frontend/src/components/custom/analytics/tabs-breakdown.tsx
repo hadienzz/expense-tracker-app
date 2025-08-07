@@ -1,6 +1,5 @@
 import { Doughnut } from "react-chartjs-2";
 import { TabsContent } from "../../ui/tabs";
-import { ChartData, ChartOptions } from "chart.js";
 import CategoryBreakdownItem from "./category-breakdown-item";
 
 interface TransactionSummaryItem {

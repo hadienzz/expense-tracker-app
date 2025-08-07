@@ -1,3 +1,5 @@
+'use client'
+
 import { Wallet } from "lucide-react";
 import React from "react";
 import { BENEFIT_LIST } from "../../../contents/contents_data";

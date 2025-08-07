@@ -1,5 +1,3 @@
-import { formatPrice } from "@/lib/formatValue";
-
 interface CategoryBreakdownItemProps {
   category: string;
   total: number;

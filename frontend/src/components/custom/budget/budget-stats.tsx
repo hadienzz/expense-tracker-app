@@ -6,7 +6,7 @@ import { formatPrice } from "@/lib/formatValue";
 const BudgetStats = ({ data, isLoading }: BudgetManagementProps) => {
   const totalBudget = data?.reduce?.((acc, cur) => acc + cur.limit, 0) ?? 0;
   const totalSpent = data?.reduce?.((acc, cur) => acc + cur.used, 0) ?? 0;
-  const remainingBudget = totalBudget - totalSpent;
+  const remainingBudget = Array.isArray(data) ? totalBudget - totalSpent : 0;
 
   return (
     <div className="grid lg:grid-cols-3 gap-4">

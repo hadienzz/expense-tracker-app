@@ -28,8 +28,7 @@ const useForm = () => {
 
         return response.data;
       } catch (err) {
-        toast.error("Gagal menyimpan data");
-
+        return toast.error("Gagal menyimpan data");
         console.error(err);
       }
     },
@@ -52,7 +51,6 @@ const useForm = () => {
     validationSchema: transactionValidationSchema,
     onSubmit: (values) => {
       mutate(values);
-      console.log(values);
     },
   });
 

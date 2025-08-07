@@ -66,7 +66,6 @@ const BudgetItem = ({
             </div>
             <div>
               <h1>{category}</h1>
-              <p>DATE</p>
             </div>
           </div>
           <div className="flex items-center gap-4">
@@ -117,6 +116,7 @@ const BudgetItem = ({
               <p className="text-neutral-600 text-sm">
                 Tersisa {formatPrice(budget - used)}
               </p>
+              <div>•</div>
               <p className="text-neutral-600 text-sm">
                 {lastTransactionAt
                   ? formatDistanceToNow(new Date(lastTransactionAt), {
