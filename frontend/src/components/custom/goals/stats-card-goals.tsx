@@ -1,10 +1,7 @@
-import AnalyticsLayout from "@/components/layouts/analytics-layout";
-import StatsCard from "../expense/stats-card";
 import { DollarSign, Target, TrendingUp } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { formatPrice } from "@/lib/formatValue";
 import { dataItem } from "./goals-management";
-import { access } from "fs";
 
 interface StatsCardGoalsProps {
   data: dataItem[];

@@ -59,6 +59,7 @@ const BasicInfoGoals = ({ formik }: BasicInfoGoals) => {
       <FormInput
         label="Goal Title"
         name="title"
+        placeholder="Masukkan judul..."
         onChange={formik.handleChange}
         value={formik.values.title}
       />
@@ -83,6 +84,7 @@ const BasicInfoGoals = ({ formik }: BasicInfoGoals) => {
         </SelectContent>
         <FormInput
           label="Description (optional)"
+          placeholder="Deskripsi..."
           name="description"
           onChange={formik.handleChange}
           value={formik.values.description}

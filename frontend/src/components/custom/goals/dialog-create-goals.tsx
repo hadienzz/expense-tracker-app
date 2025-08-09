@@ -9,16 +9,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import React, { JSX, useState } from "react";
-import FormInput from "../shared/form-input";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Label } from "@/components/ui/label";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import BasicInfoGoals from "./basic-info-goals";
 import DetailInfoGoals from "./detail-info-goals";
 import useAddGoals, { FormikGoalsValue } from "@/hooks/useAddGoals";

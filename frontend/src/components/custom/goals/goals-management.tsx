@@ -16,10 +16,12 @@ export interface dataItem {
   title: string;
   type: string;
   description?: string;
-  currentAmount: number;
-  targetAmount: number;
+  currentAmount: string;
+  targetAmount: string;
   targetDate: string;
   priorityLevel: string;
+  lastAddAt: string;
+  status: string;
 }
 
 interface GoalsManagementProps {
@@ -34,14 +36,14 @@ const GoalsManagement = ({ data, isLoading }: GoalsManagementProps) => {
     <Card>
       <CardHeader className="">
         <div className="flex items-center justify-between">
-          <div className="grid gap-2">
+          <div className="grid gap-2 text-sm lg:text-base">
             <CardTitle>Target Finansial Anda</CardTitle>
             <CardDescription>
               Pantau tujuan target keuangan Anda.
             </CardDescription>
           </div>
           <DialogCreateGoals>
-            <div className="bg-neutral-900 text-white font-semibold w-fit h-fit px-3 py-2 rounded-lg">
+            <div className="bg-neutral-900 text-white font-semibold w-fit h-fit lg:px-3 lg:py-2 text-xs px-2 py-1 rounded-lg">
               Tambah Target
             </div>
           </DialogCreateGoals>

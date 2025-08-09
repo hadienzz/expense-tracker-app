@@ -34,7 +34,7 @@ const useAddGoals = () => {
     },
 
     onSuccess: () => {
-      // formik.resetForm();
+      formik.resetForm();
       queryClient.invalidateQueries({ queryKey: ["goals"] });
     },
   });
@@ -47,7 +47,7 @@ const useAddGoals = () => {
       targetAmount: "",
       currentAmount: "",
       targetDate: "",
-      priorityLevel: "",
+      priorityLevel: "Medium",
     },
     onSubmit: (value) => {
       mutate(value);

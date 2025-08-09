@@ -34,4 +34,30 @@ const deleteGoalService = async (id) => {
   return result;
 };
 
-module.exports = { createGoalsService, getGoalsService, deleteGoalService };
+const addProgressGoalsService = async (id, addProgress) => {
+  const goalId = Number(id);
+
+  const selectedGoal = await prisma.goals.findUnique({
+    where: {
+      id: goalId,
+    },
+    select: { currentAmount: true, lastAddAt: true },
+  });
+
+  if (!selectedGoal) {
+    throw new Error("Goal not found");
+  }
+  const updatedCurrentAmount = Number(selectedGoal.currentAmount) + addProgress;
+  const result = await prisma.goals.update({
+    where: { id: goalId },
+    data: { currentAmount: updatedCurrentAmount, lastAddAt: new Date() },
+  });
+  return result;
+};
+
+module.exports = {
+  createGoalsService,
+  getGoalsService,
+  deleteGoalService,
+  addProgressGoalsService,
+};

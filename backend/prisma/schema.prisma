@@ -54,4 +54,6 @@ model Goals {
   targetAmount  BigInt
   targetDate    String?
   priorityLevel String
+  lastAddAt     DateTime?
+  status String @default("Active")
 }

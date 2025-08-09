@@ -2,6 +2,7 @@ const {
   createGoalsService,
   getGoalsService,
   deleteGoalService,
+  addProgressGoalsService,
 } = require("./goals.service");
 
 const createGoals = (req, res) => {
@@ -38,4 +39,18 @@ const deleteGoals = async (req, res) => {
   }
 };
 
-module.exports = { createGoals, getGoals, deleteGoals };
+const addProgressGoals = async (req, res) => {
+  const { id } = req.params;
+  const { addProgress } = req.body;
+  try {
+    const result = await addProgressGoalsService(id, addProgress);
+    return res
+      .status(200)
+      .json({ message: "Berhasil menambahkan progress baru" });
+  } catch (err) {
+    console.error(err);
+    return res.status(400).json({ message: "Gagal menambahkan Progres" });
+  }
+};
+
+module.exports = { createGoals, getGoals, deleteGoals, addProgressGoals };

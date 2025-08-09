@@ -7,11 +7,8 @@ import { formatDistanceToNow } from "date-fns";
 import { id as localeId } from "date-fns/locale";
 
 const BudgetAnalyticsItem = ({
-  id,
-  budget,
   category,
   limit,
-  over,
   progress,
   used,
   lastTransactionAt,

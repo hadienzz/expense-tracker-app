@@ -28,6 +28,7 @@ const DetailInfoGoals = ({ formik }: DetailInfoGoalsProps) => {
           value={formik.values.targetAmount}
           name="targetAmount"
           required
+          placeholder="0"
         />
         <FormInput
           type="number"
@@ -35,6 +36,7 @@ const DetailInfoGoals = ({ formik }: DetailInfoGoalsProps) => {
           onChange={formik.handleChange}
           value={formik.values.currentAmount}
           name="currentAmount"
+          placeholder="0"
           required
         />
       </div>
@@ -47,7 +49,6 @@ const DetailInfoGoals = ({ formik }: DetailInfoGoalsProps) => {
           onChange={formik.handleChange}
         />
         <Select
-          defaultValue="Medium"
           name="priorityLevel"
           value={formik.values.priorityLevel}
           onValueChange={(value) =>
@@ -58,14 +59,14 @@ const DetailInfoGoals = ({ formik }: DetailInfoGoalsProps) => {
             <SelectLabel className="text-sm font-medium text-black -mt-1">
               Priority Level
             </SelectLabel>
-            <SelectTrigger className="w-full" defaultValue={"Medium"}>
+            <SelectTrigger className="w-full">
               <SelectValue
                 placeholder="🟡 Medium Priority"
-                className="text-black"
+                className="placeholder:text-black"
               />
             </SelectTrigger>
 
-            <SelectContent className="">
+            <SelectContent>
               <SelectItem value="High">🔴 High Priority</SelectItem>
               <SelectItem value="Medium">🟡 Medium Priority</SelectItem>
               <SelectItem value="Low">🟢 Low Priority</SelectItem>

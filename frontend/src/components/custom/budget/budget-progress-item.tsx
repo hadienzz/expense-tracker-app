@@ -3,20 +3,16 @@ import { Progress } from "../../ui/progress";
 import { formatPrice } from "@/lib/formatValue";
 
 interface BudgetProgressItemProps {
-  id: number;
   category: string;
   limit: string;
-  budget: number;
   over: boolean;
   progress: number;
   used: number;
 }
 
 const BudgetProgressItem = ({
-  id,
   category,
   limit,
-  budget,
   over,
   progress,
   used,
